@@ -1,5 +1,9 @@
 const db = require("../data/db-config");
 
+function getUsers() {
+  return db("user");
+}
+
 function addUser(user) {
   return db("user")
     .insert(user)
@@ -11,5 +15,6 @@ function addUser(user) {
 }
 
 module.exports = {
+  getUsers,
   addUser
 };
