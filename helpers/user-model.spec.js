@@ -20,7 +20,15 @@ describe("Users model", () => {
     });
   });
 
-  describe("Get Users function", () => {});
+  describe("Get Users function", () => {
+    it("Returns all users in the database", async () => {
+      await db("user").insert({ name: "Joe" });
+      await db("user").insert({ name: "Luke" });
+      await db("user").insert({ name: "Jane" });
+      const users = await Users.getUsers();
+      expect(users).toHaveLength(3);
+    });
+  });
 
   describe("Delete Users function", () => {});
 });
